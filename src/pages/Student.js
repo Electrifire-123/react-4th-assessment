@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { store } from "../store/Details";
 
 const Student = () => {
+  const [students] = useContext(store)
+  console.log(students)
+  console.log(students)
   return (
     <div className="container text-center">
-      <h1>Student</h1>
-      <table class="table table-bordered border-primary">
+      
+      <div className="d-flex justify-content-between">
+        <h1>Student</h1>
+        <Link className="btn btn-primary m-1" to='/add-student'>Add Students</Link>
+      </div>
+      <table className="table table-bordered border-primary">
         <thead>
           <tr>
             <th scope="col"> Name</th>
@@ -15,28 +24,16 @@ const Student = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th >Rahul</th>
-            <td>21</td>
-            <td>MERN</td>
-            <td>October</td>
-            <td>Edit</td>
-          </tr>
-          <tr>
-            <th >Sarang</th>
-            <td>20</td>
-            <td>MERN</td>
-            <td>November</td>
-            <td>Edit</td>
-          </tr>
-          <tr>
-            <th >Harsh</th>
-            <td>19</td>
-            <td>MERN</td>
-            <td>November
-            </td>
-            <td>Edit</td>
-          </tr>
+        {students.map((students) => (
+          <tr key={students.id}>
+          <th>{students.Name}</th>
+          <td>{students.Age}</td>
+          <td>{students.Course}</td>
+          <td>{students.Batch}</td>
+          <td><Link to={`/edit-student-details/${students.id}`}>Edit</Link></td>
+        </tr>
+        ))}
+          
         </tbody>
       </table>
     </div>
