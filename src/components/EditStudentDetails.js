@@ -1,27 +1,23 @@
 import React, { useContext, useState } from "react";
-import { Link} from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 import { store } from "../store/Details";
 
 const EditStudentDetails = (props) => {
-  
-    const [studentData, setStudentData] = useState({
-        Name: "",
-        Age: "",
-        Course: "",
-        Batch: "",
-        id: "",
-      });
+    const params = useParams();
+    const {id} = params;
+    const [students, setStudents] = useContext(store);
+    const [studentData, setStudentData] = useState(students[id]);
     
-      const [students, setStudents] = useContext(store);
     
       const handleChange = (e) => {
         setStudentData({ ...studentData, [e.target.name]: e.target.value });
       };
     
       const handleSubmit = (e) => {
-        setStudents([...students,{Name:Name,Age:Age,Course:Course,Batch:Batch,id:new Date().getTime().toString()}])
+        students[id]=studentData;
+        setStudents(students);
       };
-      const { Name, Age, Course, Batch, id } = studentData;
+      const { Name, Age, Course, Batch } = studentData;//id
       console.log(props)
       return (
         <>
@@ -33,8 +29,8 @@ const EditStudentDetails = (props) => {
               className="form-control form-control-lg"
                 type="text"
                 value={Name}
-                onChange={handleChange}
                 name="Name"
+                onChange={handleChange}
                 id={id}
               />
             </section>
@@ -44,8 +40,8 @@ const EditStudentDetails = (props) => {
               className="form-control form-control-lg"
                 type="text"
                 value={Age}
-                onChange={handleChange}
                 name="Age"
+                onChange={handleChange}
                 id={id}
               />
             </section>
@@ -55,8 +51,8 @@ const EditStudentDetails = (props) => {
               className="form-control form-control-lg"
                 type="text"
                 value={Course}
-                onChange={handleChange}
                 name="Course"
+                onChange={handleChange}
                 id={id}
                 
               />
@@ -67,8 +63,8 @@ const EditStudentDetails = (props) => {
               className="form-control form-control-lg"
                 type="text"
                 value={Batch}
-                onChange={handleChange}
                 name="Batch"
+                onChange={handleChange}
                 id={id}
               />
             </section>

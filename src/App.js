@@ -23,7 +23,7 @@ function App() {
             <Route path="/add-student" element={<AddStudents />} />
 
             <Route
-              path="/edit-student-details"
+              path="/edit-student-details/:id"
               element={<EditStudentDetails />}
             />
           </Routes>

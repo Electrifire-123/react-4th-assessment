@@ -1,6 +1,6 @@
 
 
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, } from 'react'
 
 export const store = createContext();
 const Details = (props) => {
@@ -21,11 +21,9 @@ const Details = (props) => {
         },
     ])
   return (
-        <div>
         <store.Provider value={[students,setStudents]}>
             {props.children}
         </store.Provider>
-    </div>
   )
 }
 

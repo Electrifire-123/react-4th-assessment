@@ -5,7 +5,6 @@ import { store } from "../store/Details";
 const Student = () => {
   const [students] = useContext(store)
   console.log(students)
-  console.log(students)
   return (
     <div className="container text-center">
       

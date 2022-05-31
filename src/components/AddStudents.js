@@ -19,7 +19,7 @@ const AddStudents = () => {
   };
 
   const handleSubmit = (e) => {
-    setStudents([...students,{Name:Name,Age:Age,Course:Course,Batch:Batch,id:new Date().getTime().toString()}])
+    setStudents([...students,{Name:Name,Age:Age,Course:Course,Batch:Batch,id:id}])
   };
   const { Name, Age, Course, Batch, id } = studentData;
   return (
